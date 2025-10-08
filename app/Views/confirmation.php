@@ -7,8 +7,8 @@
 </head>
 <body class="container mt-5">
     <div class="alert alert-success">
-        <?= htmlspecialchars($message) ?>
+        Action effectuée avec succès !
     </div>
-    <a href="/planning-copilot/public/" class="btn btn-primary">Retour à l'accueil</a>
+    <a href="/planning-copilot/public/" class="btn btn-secondary">Retour à l'accueil</a>
 </body>
 </html>

@@ -5,23 +5,20 @@ require_once __DIR__ . '/app/Models/User.php';
 require_once __DIR__ . '/app/Models/Event.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if ($_GET['action'] === 'add_user') {
+    if (isset($_GET['action']) && $_GET['action'] === 'add_user') {
         User::insertUser($_POST['username'], $_POST['email'], $_POST['password']);
-        $message = "Utilisateur ajouté avec succès.";
         require_once __DIR__ . '/app/Views/confirmation.php';
-    } elseif ($_GET['action'] === 'add_event') {
+    } elseif (isset($_GET['action']) && $_GET['action'] === 'add_event') {
         Event::insertEvent($_POST['title'], $_POST['date'], $_POST['location'], $_POST['user_id']);
-        $message = "Événement ajouté avec succès.";
         require_once __DIR__ . '/app/Views/confirmation.php';
-    } elseif ($_GET['action'] === 'login') {
-        $user = User::authenticate($_POST['username'], $_POST['password']);
+    } elseif (isset($_GET['action']) && $_GET['action'] === 'login') {
+        $user = User::login($_POST['username'], $_POST['password']);
         if ($user) {
             $_SESSION['user'] = $user;
-            $message = "Connexion réussie.";
+            require_once __DIR__ . '/app/Views/confirmation.php';
         } else {
-            $message = "Échec de la connexion.";
+            echo "<div class='alert alert-danger'>Échec de la connexion</div>";
         }
-        require_once __DIR__ . '/app/Views/confirmation.php';
     }
 } else {
     if (isset($_GET['user'])) {

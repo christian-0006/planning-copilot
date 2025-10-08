@@ -10,8 +10,8 @@ $users = User::getAllUsers();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="container mt-5">
-    <h2>Ajouter un événement</h2>
-    <form method="POST" action="?action=add_event">
+    <h1>Ajouter un événement</h1>
+    <form method="post" action="?action=add_event">
         <div class="mb-3">
             <label for="title" class="form-label">Titre</label>
             <input type="text" class="form-control" name="title" required>
@@ -26,13 +26,13 @@ $users = User::getAllUsers();
         </div>
         <div class="mb-3">
             <label for="user_id" class="form-label">Utilisateur</label>
-            <select name="user_id" class="form-select" required>
+            <select class="form-select" name="user_id" required>
                 <?php foreach ($users as $user): ?>
                     <option value="<?= $user['id'] ?>"><?= htmlspecialchars($user['username']) ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <button type="submit" class="btn btn-primary">Créer</button>
     </form>
 </body>
 </html>
