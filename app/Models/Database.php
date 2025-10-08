@@ -1,6 +1,4 @@
 <?php
-// app/Models/Database.php
-
 class Database {
     public static function connect() {
         $dotenv = parse_ini_file(__DIR__ . '/../../.env');
